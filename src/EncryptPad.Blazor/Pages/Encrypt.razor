@@ -1,0 +1,38 @@
+﻿@page "/encrypt"
+@using EncryptPad.Shared
+@using EncryptPad.Shared.Models
+@inject SqliteOneTimePadService _otpService
+
+<div class="mb-5">
+    <TextArea Rows="6" Label="Unencrypted Text" @ref="encryptionTextArea"></TextArea>
+    <button class="btn btn-primary" @onclick="EncryptText">Encrypt</button>
+</div>
+
+<ClipboardTextArea Rows="6" Label="Encrypted Text" DisableInput="true" @ref="clipboard"></ClipboardTextArea>
+
+@code {
+    TextArea? encryptionTextArea;
+    ClipboardTextArea clipboard = new ClipboardTextArea();
+
+    public async Task EncryptText()
+    {
+        if (encryptionTextArea != null)
+        {
+            try
+            {
+                UnencryptedText ut = new UnencryptedText() { Text = encryptionTextArea.Value };
+                var result = await _otpService.EncryptTextAsync(ut);
+                if (clipboard.clipboardTextArea != null)
+                {
+                    clipboard.clipboardTextArea.Value = result;
+                    clipboard.clipboardTextArea.RefreshComponent();
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }     
+        }    
+    }
+}

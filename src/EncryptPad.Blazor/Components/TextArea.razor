@@ -1,0 +1,28 @@
+﻿
+@if (!string.IsNullOrEmpty(Label))
+{
+    <label>@Label</label>
+}
+<textarea class="form-control mb-2" rows="@Rows" disabled="@DisableInput" @bind="@Value"></textarea>
+
+
+@code {
+
+
+    [Parameter]
+    public bool DisableInput { get; set; }
+
+    [Parameter]
+    public int Rows { get; set; } = 1;
+
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    public string Value { get; set; } = string.Empty;
+
+
+    public void RefreshComponent()
+    {
+        StateHasChanged();
+    }
+}

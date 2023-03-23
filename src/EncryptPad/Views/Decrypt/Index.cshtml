@@ -1,0 +1,30 @@
+﻿<div class="row mb-2">
+    <div class="col-md">
+        <label>Encrypted Text</label>
+        <textarea class="form-control" id="encrypted-text" rows="8"></textarea>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md">
+        <button class="btn btn-primary" id="decrypt-btn">Decrypt Text</button>
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-md">
+        <label>Decrypted Text</label>
+        <textarea class="form-control" id="decrypted-text" rows="8" disabled></textarea>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md">
+        <button class="btn btn-primary" id="copy-btn">Copy Text</button>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="~/js/Pages/DecryptPage.js" type="module"></script>
+}

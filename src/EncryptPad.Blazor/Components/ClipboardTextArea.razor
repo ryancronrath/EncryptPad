@@ -1,0 +1,28 @@
+﻿@inject IJSRuntime JSRuntime
+
+<TextArea Rows="@Rows" Label="@Label" @ref="clipboardTextArea" DisableInput="@DisableInput"></TextArea>
+<button class="btn btn-primary" @onclick="CopyTextToClipboard">Copy</button>
+
+@code {
+
+
+    [Parameter]
+    public bool DisableInput { get; set; }
+
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public int Rows { get; set; } = 1;
+
+    public TextArea? clipboardTextArea;
+
+    private async Task CopyTextToClipboard()
+    {
+        if (clipboardTextArea != null)
+        {
+            Console.WriteLine(clipboardTextArea.Value);
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", clipboardTextArea.Value);
+        }
+    }
+}
