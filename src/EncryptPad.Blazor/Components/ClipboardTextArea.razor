@@ -3,8 +3,14 @@
 <TextArea Rows="@Rows" Label="@Label" @ref="clipboardTextArea" DisableInput="@DisableInput"></TextArea>
 <button class="btn btn-primary" @onclick="CopyTextToClipboard">Copy</button>
 
-@code {
+@if (DisplaySuccessMsg)
+{
+    <small class="text-success ms-3">Copy Successful</small>
+    
+}
 
+@code {
+    private bool DisplaySuccessMsg = false;
 
     [Parameter]
     public bool DisableInput { get; set; }
@@ -23,6 +29,7 @@
         {
             Console.WriteLine(clipboardTextArea.Value);
             await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", clipboardTextArea.Value);
+            DisplaySuccessMsg = true;
         }
     }
 }
