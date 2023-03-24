@@ -1,4 +1,4 @@
-﻿namespace EncryptPad.Repository
+﻿namespace EncryptPad.MVC.Repository
 {
     public static class DataSource
     {

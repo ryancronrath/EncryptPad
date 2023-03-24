@@ -1,4 +1,4 @@
-namespace EncryptPad.Models
+namespace EncryptPad.MVC.Models
 {
     public class ErrorViewModel
     {

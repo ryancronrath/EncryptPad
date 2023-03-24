@@ -1,4 +1,4 @@
-using EncryptPad.Repository;
+using EncryptPad.MVC.Repository;
 using EncryptPad.Shared;
 using SQLite;
 using TextEncryption;

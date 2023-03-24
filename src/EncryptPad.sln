@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptPad.MVC", "EncryptPad\EncryptPad.MVC.csproj", "{951BB8A7-9274-49A3-AEF3-DC48D9F2BFF3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextEncryption", "TextEncryption\TextEncryption.csproj", "{F84791F8-DF7D-4C9F-88B1-56F2CC1F6AF1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptPad.Blazor", "EncryptPad.Blazor\EncryptPad.Blazor.csproj", "{DF46EBB6-D2C3-45BB-92ED-AD2395C96C26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptPad.Shared", "EncryptPad.Shared\EncryptPad.Shared.csproj", "{09B215BD-5B3A-443E-8274-BD336E27B43D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptPad.Shared", "EncryptPad.Shared\EncryptPad.Shared.csproj", "{09B215BD-5B3A-443E-8274-BD336E27B43D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptPad.MVC", "EncryptPad.MVC\EncryptPad.MVC.csproj", "{64B3B8AE-0EF8-4CFC-9068-AF522AB6B5EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{951BB8A7-9274-49A3-AEF3-DC48D9F2BFF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{951BB8A7-9274-49A3-AEF3-DC48D9F2BFF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{951BB8A7-9274-49A3-AEF3-DC48D9F2BFF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{951BB8A7-9274-49A3-AEF3-DC48D9F2BFF3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F84791F8-DF7D-4C9F-88B1-56F2CC1F6AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F84791F8-DF7D-4C9F-88B1-56F2CC1F6AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84791F8-DF7D-4C9F-88B1-56F2CC1F6AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{09B215BD-5B3A-443E-8274-BD336E27B43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09B215BD-5B3A-443E-8274-BD336E27B43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09B215BD-5B3A-443E-8274-BD336E27B43D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B3B8AE-0EF8-4CFC-9068-AF522AB6B5EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B3B8AE-0EF8-4CFC-9068-AF522AB6B5EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B3B8AE-0EF8-4CFC-9068-AF522AB6B5EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B3B8AE-0EF8-4CFC-9068-AF522AB6B5EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

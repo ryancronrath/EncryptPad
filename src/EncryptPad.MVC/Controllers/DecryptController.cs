@@ -2,7 +2,7 @@
 using EncryptPad.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EncryptPad.Controllers
+namespace EncryptPad.MVC.Controllers
 {
     public class DecryptController : Controller
     {

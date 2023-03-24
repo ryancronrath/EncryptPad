@@ -1,8 +1,8 @@
-﻿using EncryptPad.Models;
+﻿using EncryptPad.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace EncryptPad.Controllers
+namespace EncryptPad.MVC.Controllers
 {
     public class HomeController : Controller
     {
