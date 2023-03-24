@@ -26,5 +26,8 @@
         let value = D.getElementById('encrypted-text').value;
 
         navigator.clipboard.writeText(value);
+
+        D.getElementById('success-msg').classList.remove('hide');
+
     });
 })();
