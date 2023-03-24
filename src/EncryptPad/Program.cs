@@ -1,7 +1,5 @@
-using EncryptPad.Actions;
 using EncryptPad.Repository;
 using EncryptPad.Shared;
-using EncryptPad.Shared.Models;
 using SQLite;
 using TextEncryption;
 
@@ -10,10 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton(new SQLiteAsyncConnection(DataSource.databasePath));
-builder.Services.AddSingleton<OneTimePad>();
-builder.Services.AddTransient<SqliteOneTimePadService>();
-builder.Services.AddTransient<SqliteCleanupAction>();
+// Create a SqliteAsyncConnection, which will create the database if it doesn't already exist.
+SQLiteAsyncConnection sqliteConnection = new(DataSource.databasePath);
+
+builder.Services.AddSingleton(new SqliteOneTimePadService(new OneTimePad(), sqliteConnection, 120));
 
 var app = builder.Build();
 
@@ -35,16 +33,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-await DBInit();
-
-async Task DBInit()
-{
-    if (!File.Exists(DataSource.databasePath))
-    {
-        var db = new SQLiteAsyncConnection(DataSource.databasePath);
-        await db.CreateTableAsync<OTPKey>();
-    }
-}
 
 app.Run();

@@ -1,8 +1,6 @@
 using EncryptPad.Blazor.Repository;
 using EncryptPad.Shared;
 using EncryptPad.Shared.Models;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using SQLite;
 using TextEncryption;
 
@@ -12,9 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddSingleton(new SQLiteAsyncConnection(DataSource.databasePath));
-builder.Services.AddSingleton<OneTimePad>();
-builder.Services.AddTransient<SqliteOneTimePadService>();
+// Create a SqliteAsyncConnection, which will create the database if it doesn't already exist.
+SQLiteAsyncConnection sqliteConnection = new(DataSource.databasePath);
+
+builder.Services.AddSingleton(new SqliteOneTimePadService(new OneTimePad(), sqliteConnection, 120));
 
 var app = builder.Build();
 
@@ -34,18 +33,6 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
-
-await DBInit();
-
-async Task DBInit()
-{
-    if (!File.Exists(DataSource.databasePath))
-    {
-        var db = new SQLiteAsyncConnection(DataSource.databasePath);
-        await db.CreateTableAsync<OTPKey>();
-    }
-}
 
 
 app.Run();
