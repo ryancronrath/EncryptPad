@@ -1,11 +1,9 @@
-﻿using EncryptPad.Actions;
-using EncryptPad.Models;
+﻿using EncryptPad.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace EncryptPad.Controllers
 {
-    [ServiceFilter(typeof(SqliteCleanupAction))]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -30,6 +28,5 @@ namespace EncryptPad.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
     }
 }

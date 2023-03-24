@@ -5,7 +5,7 @@ namespace TextEncryption
     public class OneTimePad
     {
 
-        private List<char> characters = new List<char>()
+        private readonly List<char> characters = new()
         {
             'a',
             'b',
@@ -104,11 +104,11 @@ namespace TextEncryption
             ' '
         };
 
-        private int mod;
+        private readonly int mod;
 
         public OneTimePad()
         {
-            mod = characters.Count();
+            mod = characters.Count;
         }
 
         public string Encrypt(string text, string key)
@@ -116,9 +116,9 @@ namespace TextEncryption
             text.Replace("\n", "");
             text.Replace("\t", "");
             text.Replace("\r", "");
-            StringBuilder encryptedText = new StringBuilder();
+            StringBuilder encryptedText = new();
 
-            for (int i = 0; i < text.Count(); i++)
+            for (int i = 0; i < text.Length; i++)
             {
                 var textIndex = characters.IndexOf(text[i]);
                 var keyIndex = characters.IndexOf(key[i]);
@@ -140,7 +140,7 @@ namespace TextEncryption
 
         public string Decrypt(string text, string key)
         {
-            StringBuilder decryptedText = new StringBuilder();
+            StringBuilder decryptedText = new();
 
             for (int i = 0; i < text.Length; i++)
             {
@@ -166,8 +166,8 @@ namespace TextEncryption
 
         public string GenerateKey(int length)
         {
-            Random r = new Random();
-            StringBuilder key = new StringBuilder();
+            Random r = new();
+            StringBuilder key = new();
             for (int i = 0; i < length; i++)
             {
                 key.Append(characters[r.Next(0, characters.Count)]);

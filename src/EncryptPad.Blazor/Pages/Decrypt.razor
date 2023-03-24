@@ -13,7 +13,7 @@
 
 @code {
     TextArea? decryptionTextArea;
-    ClipboardTextArea clipboard = new ClipboardTextArea();
+    ClipboardTextArea? clipboard;
 
     public async Task EncryptText()
     {
@@ -24,13 +24,14 @@
             {
                 EncryptedText et = new EncryptedText() { Text = decryptionTextArea.Value };
                 var result = await _otpService.DecryptTextAsync(et);
-                if (clipboard.clipboardTextArea != null)
-                {
-                    clipboard.clipboardTextArea.Value = result;
-                    clipboard.clipboardTextArea.RefreshComponent();
-                }
+
+                if (clipboard == null) return;
+                if (clipboard.clipboardTextArea == null) return;
+
+                clipboard.clipboardTextArea.Value = result;
+                clipboard.clipboardTextArea.RefreshComponent();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;

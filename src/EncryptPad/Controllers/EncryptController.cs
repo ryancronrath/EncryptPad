@@ -1,7 +1,6 @@
 ﻿using EncryptPad.Shared;
 using EncryptPad.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
-using SQLite;
 
 namespace EncryptPad.Controllers
 {
@@ -27,7 +26,7 @@ namespace EncryptPad.Controllers
                 var payload = await _otpService.EncryptTextAsync(unencryptedText);
                 return Json(payload);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
